@@ -57,7 +57,7 @@ pipeline {
             mvn sonar:sonar \
               -Dsonar.projectKey=spring-boot-app \
               -Dsonar.projectName="Spring Boot App" \
-              -Dsonar.host.url=${env.SONAR_URL} \
+              -Dsonar.host.url=$SONAR_URL \
               -Dsonar.login=$SONAR_AUTH_TOKEN
           '''
         }
