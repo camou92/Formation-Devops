@@ -52,13 +52,14 @@ pipeline {
     stage('2. Analyse Statique SonarQube') {
       steps {
         withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]) {
-          sh """
+          sh '''
             cd spring-boot-app
             mvn sonar:sonar \
               -Dsonar.projectKey=spring-boot-app \
-              -Dsonar.login=$SONAR_AUTH_TOKEN \
-              -Dsonar.host.url=${env.SONAR_URL}
-          """
+              -Dsonar.projectName="Spring Boot App" \
+              -Dsonar.host.url=${env.SONAR_URL} \
+              -Dsonar.login=$SONAR_AUTH_TOKEN
+          '''
         }
       }
     }
