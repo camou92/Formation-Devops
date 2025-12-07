@@ -55,6 +55,7 @@ pipeline {
           sh """
             cd spring-boot-app
             mvn sonar:sonar \
+              -Dsonar.projectKey=spring-boot-app \
               -Dsonar.login=$SONAR_AUTH_TOKEN \
               -Dsonar.host.url=${env.SONAR_URL}
           """
